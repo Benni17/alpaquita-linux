@@ -15,10 +15,10 @@
     <img src="img/logo.png" alt="Logo" width="220">
   </a>
 
-<h3 align="center">Alpaquita Linux image for OpenStack</h3>
+<h3 align="center">Alpaquita Linux Cloud Images</h3>
 
   <p align="center">
-    Port of Alpaquita Linux distribution for OpenStack environments
+    Optimized Alpaquita Linux images for OpenStack and Proxmox environments
     <br />
     <a href="https://github.com/open-img-cloud/alpaquita-linux"><strong>Explore the docs »</strong></a>
     <br />
@@ -32,7 +32,6 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-About The Project
 This project provides optimized Alpaquita Linux images specifically designed for cloud environments, including OpenStack and Proxmox platforms. Alpaquita Linux is a lightweight, security-focused distribution offering both glibc and musl libc variants.  
 
 Our build process downloads the official Alpaquita Linux qcow2 images directly from [Bell-SW's repository](https://bell-sw.com/alpaquita-linux/) and customizes them using libguestfs tools (virt-customize) to ensure seamless cloud integration. The customization process includes:
@@ -53,13 +52,13 @@ Our build process downloads the official Alpaquita Linux qcow2 images directly f
 
 ### Update Schedule
 
-Images are automatically built and released when new Alpaquita Linux versions are available from [the official Alpaquita Linux repository (for glibc [here](https://packages.bell-sw.com/browse/alpaquita/glibc/stream/releases/x86_64/) and for musl [here](https://packages.bell-sw.com/browse/alpaquita/musl/stream/releases/x86_64/)). The CI/CD pipeline ensures fresh images with the latest security updates and cloud optimizations.
+Images are automatically built and released when new Alpaquita Linux versions are available from the official Alpaquita Linux repository ([glibc variant](https://packages.bell-sw.com/browse/alpaquita/glibc/stream/releases/x86_64/) and [musl variant](https://packages.bell-sw.com/browse/alpaquita/musl/stream/releases/x86_64/)). The CI/CD pipeline ensures fresh images with the latest security updates and cloud optimizations.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## How to use this image
 
-1. Set your OpenStack environement variables
+1. Set your OpenStack environment variables
 2. Download the latest image from the [repository page](https://repo.openimages.cloud/alpaquita-linux/ "Images Repository")
 3. Upload image to your OpenStack environment  
 
