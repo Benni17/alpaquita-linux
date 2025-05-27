@@ -8,7 +8,6 @@
 [![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
-
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
@@ -33,15 +32,32 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-This project is a simple port of Alpine Linux releases for OpenStack environments.  
-This image used the the project [alpine-make-vm-image](https://github.com/alpinelinux/alpine-make-vm-image "alpine-make-vm-image project") to build base image and we make some change to make it compatible with OpenStack environments and cloud-init.  
+About The Project
+This project provides optimized Alpaquita Linux images specifically designed for cloud environments, including OpenStack and Proxmox platforms. Alpaquita Linux is a lightweight, security-focused distribution offering both glibc and musl libc variants.  
 
-This image is updated when Alpine Linux team released a new version of the OS [here](https://packages.bell-sw.com/browse/alpaquita/glibc/stream/releases/x86_64/ "Alpaquita Linux Repository").
+Our build process downloads the official Alpaquita Linux qcow2 images directly from [Bell-SW's repository](https://bell-sw.com/alpaquita-linux/) and customizes them using libguestfs tools (virt-customize) to ensure seamless cloud integration. The customization process includes:
 
+- **Cloud-init integration:** Full cloud-init support with OpenStack and ConfigDrive datasources
+- **Essential cloud packages:** Installation of cloud-init, qemu-guest-agent, SSH server, and network tools
+- **Console access:** Serial console configuration for remote management
+- **Service automation:** Automatic startup of essential services (SSH, DHCP, guest agent)
+- **Storage optimization:** Image sparsification and compression for efficient deployment
+
+### Key Features
+
+- **Lightweight:** Minimal footprint optimized for cloud deployments
+- **Security-focused:** Regular security updates and hardened configuration
+- **Cloud-native:** Full cloud-init support for automated provisioning
+- **Dual variants:** Available in both glibc and musl libc versions
+- **Automated builds:** Images are automatically built and updated via GitHub Actions
+
+### Update Schedule
+
+Images are automatically built and released when new Alpaquita Linux versions are available from [the official Alpaquita Linux repository (for glibc [here](https://packages.bell-sw.com/browse/alpaquita/glibc/stream/releases/x86_64/) and for musl [here](https://packages.bell-sw.com/browse/alpaquita/musl/stream/releases/x86_64/)). The CI/CD pipeline ensures fresh images with the latest security updates and cloud optimizations.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-### How to use this image
+## How to use this image
 
 1. Set your OpenStack environement variables
 2. Download the latest image from the [repository page](https://repo.openimages.cloud/alpaquita-linux/ "Images Repository")
